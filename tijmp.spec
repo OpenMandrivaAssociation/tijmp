@@ -2,7 +2,7 @@
 
 Name:           tijmp
 Version:        0.4
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        Memory profiler for Java
 URL:            http://www.khelekore.org/jmp/tijmp/
@@ -12,7 +12,7 @@ Group:          Development/Java
 Requires:       java >= 1.6.0
 BuildRequires:  chrpath
 BuildRequires:  gtk2-devel
-BuildRequires:  jpackage-utils
+BuildRequires:  java-rpmbuild
 BuildRequires:  java-devel-icedtea
 %if %{gcj_support}
 BuildRequires:  java-gcj-compat-devel
