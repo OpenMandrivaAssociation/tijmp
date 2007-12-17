@@ -19,7 +19,6 @@ BuildRequires:  java-gcj-compat-devel
 %endif
 BuildRequires:  pkgconfig
 Obsoletes:      jmp <= 0:0.51
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 TIJmp is a memory profiler for Java. TIJmp is made for Java 6 and
