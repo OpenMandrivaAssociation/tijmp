@@ -1,7 +1,7 @@
 %define gcj_support 1
 
 Name:           tijmp
-Version:        0.4
+Version:        0.5
 Release:        %mkrel 2
 Epoch:          0
 Summary:        Memory profiler for Java
