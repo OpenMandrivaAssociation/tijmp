@@ -2,15 +2,13 @@
 
 Name:           tijmp
 Version:        0.6
-Release:        %mkrel 0.0.1
+Release:        %mkrel 0.0.2
 Epoch:          0
 Summary:        Memory profiler for Java
 URL:            http://www.khelekore.org/jmp/tijmp/
 Source0:        http://www.khelekore.org/jmp/tijmp/tijmp-%{version}.tar.gz
-License:        GPL
+License:        GPLv2+
 Group:          Development/Java
-Requires:       java >= 1.6.0
-BuildRequires:  chrpath
 BuildRequires:  gtk2-devel
 BuildRequires:  java-rpmbuild
 %if %{gcj_support}
@@ -45,24 +43,20 @@ TIJmp is distributed under the General Public License, GPL.
 
 %build
 export CLASSPATH=""
-export JAVA_HOME="%{_jvmdir}/java-rpmbuild"
 export CFLAGS="`echo %{optflags} | sed 's/-O[0-9]*/-O3/'`"
 %ifarch x86_64
 export CFLAGS="-march=athlon64 ${CFLAGS}"
 %endif
+export JAVA_HOME=%{java_home}
 %{configure2_5x}
 %{make} JAVAC=${JAVA_HOME}/bin/javac JAVAH=${JAVA_HOME}/bin/javah JAR=${JAVA_HOME}/bin/jar
 
 %install
 %{__rm} -rf %{buildroot}
-export JAVA_HOME="%{_jvmdir}/java-rpmbuild"
+export JAVA_HOME=%{java_home}
 %{makeinstall_std} jardir=%{_jnidir} JAR=${JAVA_HOME}/bin/jar
 (cd %{buildroot}%{_jnidir} && %{__mv} %{name}.jar %{name}-%{version}.jar && for jar in *-%{version}.jar; do %{__ln_s} ${jar} `/bin/echo ${jar} | %{__sed} "s|-%{version}||g"`; done)
-
-pushd %{buildroot}%{_libdir}
-#%{_bindir}/chrpath -d lib%{name}.so.*.*.*
-%{__rm} lib%{name}.la
-popd
+%{__rm} %{buildroot}%{_libdir}/libtijmp.la
 
 %find_lang %{name}
 
