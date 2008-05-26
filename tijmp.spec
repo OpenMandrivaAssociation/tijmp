@@ -1,8 +1,8 @@
-%define gcj_support 1
+%define gcj_support 0
 
 Name:           tijmp
-Version:        0.5
-Release:        %mkrel 2
+Version:        0.6
+Release:        %mkrel 0.0.1
 Epoch:          0
 Summary:        Memory profiler for Java
 URL:            http://www.khelekore.org/jmp/tijmp/
@@ -13,7 +13,6 @@ Requires:       java >= 1.6.0
 BuildRequires:  chrpath
 BuildRequires:  gtk2-devel
 BuildRequires:  java-rpmbuild
-BuildRequires:  java-devel-icedtea
 %if %{gcj_support}
 BuildRequires:  java-gcj-compat-devel
 %endif
@@ -46,7 +45,7 @@ TIJmp is distributed under the General Public License, GPL.
 
 %build
 export CLASSPATH=""
-export JAVA_HOME="%{_jvmdir}/java-icedtea"
+export JAVA_HOME="%{_jvmdir}/java-rpmbuild"
 export CFLAGS="`echo %{optflags} | sed 's/-O[0-9]*/-O3/'`"
 %ifarch x86_64
 export CFLAGS="-march=athlon64 ${CFLAGS}"
@@ -56,7 +55,7 @@ export CFLAGS="-march=athlon64 ${CFLAGS}"
 
 %install
 %{__rm} -rf %{buildroot}
-export JAVA_HOME="%{_jvmdir}/java-icedtea"
+export JAVA_HOME="%{_jvmdir}/java-rpmbuild"
 %{makeinstall_std} jardir=%{_jnidir} JAR=${JAVA_HOME}/bin/jar
 (cd %{buildroot}%{_jnidir} && %{__mv} %{name}.jar %{name}-%{version}.jar && for jar in *-%{version}.jar; do %{__ln_s} ${jar} `/bin/echo ${jar} | %{__sed} "s|-%{version}||g"`; done)
 
@@ -67,9 +66,7 @@ popd
 
 %find_lang %{name}
 
-%if %{gcj_support}
-%{_bindir}/aot-compile-rpm
-%endif
+%{gcj_compile}
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -87,8 +84,5 @@ popd
 %doc AUTHORS ChangeLog COPYING INSTALL NEWS README TODO
 %{_jnidir}/%{name}-%{version}.jar
 %{_jnidir}/%{name}.jar
-%if %{gcj_support}
-%dir %{_libdir}/gcj/%{name}
-%attr(-,root,root) %{_libdir}/gcj/%{name}/*
-%endif
+%{gcj_files}
 %attr(-,root,root) %{_libdir}/lib%{name}.so
