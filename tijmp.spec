@@ -23,15 +23,15 @@ TIJmp is a memory profiler for Java. TIJmp is made for Java 6 and
 later, it will not work on Java 5 systems. If you need a profiler
 for Java 5 or earlier, try the JMP profiler.
 
-TIJmp is written to be fast and have a small footprint, both memory-
+It is written to be fast and have a small footprint, both memory-
 and CPU-wise. This means that the JVM will run at almost full speed,
 until you use TIJmp to find some information.
 
-TIJmp uses C code to talk to the JVM and it uses Swing to show the
+It uses C code to talk to the JVM and it uses Swing to show the
 tables of information. So TIJmp is written in C (using JVMTI and
 JNI) and Java.
 
-TIJmp runs in the same JVM as the program being profiled. This
+It runs in the same JVM as the program being profiled. This
 means that it can easily get access to all things JVMTI/JNI has to
 offer.
 
