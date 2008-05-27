@@ -35,8 +35,6 @@ It runs in the same JVM as the program being profiled. This
 means that it can easily get access to all things JVMTI/JNI has to
 offer.
 
-TIJmp is distributed under the General Public License, GPL.
-
 %prep
 %setup -q
 %{__perl} -pi -e 's/^libtijmp_la_LDFLAGS =.*/libtijmp_la_LDFLAGS = -avoid-version -module/' src/Makefile.{am,in}
