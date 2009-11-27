@@ -1,8 +1,8 @@
 %define gcj_support 0
 
 Name:           tijmp
-Version:        0.7
-Release:        %mkrel 0.0.2
+Version:        0.8
+Release:        %mkrel 0.0.1
 Epoch:          0
 Summary:        Memory profiler for Java
 URL:            http://www.khelekore.org/jmp/tijmp/
