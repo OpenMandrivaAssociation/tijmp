@@ -2,7 +2,7 @@
 
 Name:           tijmp
 Version:        0.8
-Release:        %mkrel 0.0.2
+Release:        0.0.3
 Epoch:          0
 Summary:        Memory profiler for Java
 URL:            http://www.khelekore.org/jmp/tijmp/
