@@ -5,7 +5,7 @@ Version:        0.8
 Release:        0.0.3
 Epoch:          0
 Summary:        Memory profiler for Java
-URL:            http://www.khelekore.org/jmp/tijmp/
+URL:            https://www.khelekore.org/jmp/tijmp/
 Source0:        http://www.khelekore.org/jmp/tijmp/tijmp-%{version}.tar.gz
 License:        GPLv2+
 Group:          Development/Java
