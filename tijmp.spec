@@ -9,6 +9,7 @@ URL:            https://www.khelekore.org/jmp/tijmp/
 Source0:        http://www.khelekore.org/jmp/tijmp/tijmp-%{version}.tar.gz
 License:        GPLv2+
 Group:          Development/Java
+BuildRequires:	make
 BuildRequires:  gtk2-devel
 BuildRequires:  java-rpmbuild
 %if %{gcj_support}
